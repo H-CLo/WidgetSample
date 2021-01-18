@@ -18,6 +18,8 @@
 		CEE04B9A25B516490049C977 /* MyWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE04B9925B516490049C977 /* MyWidget.swift */; };
 		CEE04B9C25B5164B0049C977 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEE04B9B25B5164B0049C977 /* Assets.xcassets */; };
 		CEE04BA025B5164B0049C977 /* MyWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CEE04B9225B516490049C977 /* MyWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CEE04CAB25B581D00049C977 /* EmojiDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE04CAA25B581D00049C977 /* EmojiDetails.swift */; };
+		CEE04CB125B5831E0049C977 /* EmojiProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE04CB025B5831E0049C977 /* EmojiProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		CEE04B9925B516490049C977 /* MyWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWidget.swift; sourceTree = "<group>"; };
 		CEE04B9B25B5164B0049C977 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEE04B9D25B5164B0049C977 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEE04CAA25B581D00049C977 /* EmojiDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiDetails.swift; sourceTree = "<group>"; };
+		CEE04CB025B5831E0049C977 /* EmojiProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +143,7 @@
 		CEC2768A25B50BAF006B6CA3 /* WidgetSample */ = {
 			isa = PBXGroup;
 			children = (
+				CEE04CA925B581B50049C977 /* Model */,
 				CEC2768B25B50BAF006B6CA3 /* WidgetSampleApp.swift */,
 				CEC2768D25B50BAF006B6CA3 /* ContentView.swift */,
 				CEC2768F25B50BB0006B6CA3 /* Assets.xcassets */,
@@ -191,6 +196,15 @@
 				CEE04B9D25B5164B0049C977 /* Info.plist */,
 			);
 			path = MyWidget;
+			sourceTree = "<group>";
+		};
+		CEE04CA925B581B50049C977 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CEE04CAA25B581D00049C977 /* EmojiDetails.swift */,
+				CEE04CB025B5831E0049C977 /* EmojiProvider.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,7 +368,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEC2768E25B50BAF006B6CA3 /* ContentView.swift in Sources */,
+				CEE04CB125B5831E0049C977 /* EmojiProvider.swift in Sources */,
 				CEC2768C25B50BAF006B6CA3 /* WidgetSampleApp.swift in Sources */,
+				CEE04CAB25B581D00049C977 /* EmojiDetails.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
