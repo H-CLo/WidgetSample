@@ -1,13 +1,13 @@
 //
-//  EmojiWidgetView.swift
+//  SmallEmojiWidgetView.swift
 //  WidgetSample
 //
-//  Created by Willey on 2021/1/18.
+//  Created by Willey on 2021/1/19.
 //
 
 import SwiftUI
 
-struct EmojiWidgetView: View {
+struct SmallEmojiWidgetView: View {
     
     let emojiDetails: EmojiDetails
     
@@ -25,11 +25,12 @@ struct EmojiWidgetView: View {
                 .foregroundColor(.white)
             }
         }
+        .widgetURL(emojiDetails.url)
     }
 }
 
-struct EmojiWidgetView_Previews: PreviewProvider {
+struct SmallEmojiWidgetView_Previews: PreviewProvider {
     static var previews: some View {
-        EmojiWidgetView(emojiDetails: EmojiDetails(emoji: "--", name: "--", description: "--"))
+        SmallEmojiWidgetView(emojiDetails: EmojiProvider.random())
     }
 }

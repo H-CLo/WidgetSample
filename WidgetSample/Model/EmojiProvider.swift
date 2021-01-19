@@ -138,4 +138,13 @@ public struct EmojiProvider {
               + "its folds, Earth’s surface shown in green on blue ocean."),
         ]
     }
+    
+    /// Chooses a random `EmojiDetails` item from the list of all emoji and returns it.
+    /// - Returns: A random `EmojiDetails` item.
+    
+    static func random() -> EmojiDetails {
+        let all = EmojiProvider.all()
+        let randomIndex = Int.random(in: 0..<all.count)
+        return all[randomIndex]
+    }
 }

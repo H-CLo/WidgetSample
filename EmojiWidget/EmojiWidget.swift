@@ -8,24 +8,25 @@
 import WidgetKit
 import SwiftUI
 
-struct Provider: TimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date())
+struct RandomEmojiWidgetProvider: TimelineProvider {
+    
+    func placeholder(in context: Context) -> RandomEmojiEntry {
+        RandomEmojiEntry(date: Date(), emojiDetails: EmojiProvider.random())
     }
-
-    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date())
+    
+    func getSnapshot(in context: Context, completion: @escaping (RandomEmojiEntry) -> ()) {
+        let entry = RandomEmojiEntry(date: Date(), emojiDetails: EmojiProvider.random())
         completion(entry)
     }
 
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
+    func getTimeline(in context: Context, completion: @escaping (Timeline<RandomEmojiEntry>) -> ()) {
+        var entries: [RandomEmojiEntry] = []
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
         for hourOffset in 0 ..< 5 {
             let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate)
+            let entry = RandomEmojiEntry(date: entryDate, emojiDetails: EmojiProvider.random())
             entries.append(entry)
         }
 
@@ -34,34 +35,32 @@ struct Provider: TimelineProvider {
     }
 }
 
-struct SimpleEntry: TimelineEntry {
-    let date: Date
+struct RandomEmojiEntry: TimelineEntry {
+    public let date: Date
+    public let emojiDetails: EmojiDetails
 }
 
-struct EmojiWidgetEntryView : View {
-    var entry: Provider.Entry
+struct RandomEmojiWidgetEntryView : View {
+    var entry: RandomEmojiWidgetProvider.Entry
 
     var body: some View {
-        Text(entry.date, style: .time)
+        EmojiWidgetView(emojiDetails: entry.emojiDetails)
     }
 }
 
 @main
-struct EmojiWidget: Widget {
-    let kind: String = "EmojiWidget"
+struct RandomEmojiWidget: Widget {
+    let kind: String = "RandomEmojiWidget"
 
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            EmojiWidgetEntryView(entry: entry)
+        StaticConfiguration(
+            kind: kind,
+            provider: RandomEmojiWidgetProvider()
+        ) { entry in
+            RandomEmojiWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
-    }
-}
-
-struct EmojiWidget_Previews: PreviewProvider {
-    static var previews: some View {
-        EmojiWidgetEntryView(entry: SimpleEntry(date: Date()))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+        .configurationDisplayName("Random Emoji Widget")
+        .description("Display a widget with an emoji that is updated randomly.")
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     }
 }

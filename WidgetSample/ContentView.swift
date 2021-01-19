@@ -10,20 +10,17 @@ import SwiftUI
 struct ContentView: View {
     
     let emojiData = EmojiProvider.all()
-    @State private var showingDetail: Bool = false
+    @State private var visibleEmojiDetails: EmojiDetails?
     
     var body: some View {
         NavigationView {
             List {
                 ForEach(emojiData, content: { data in
                     Button(action: {
-                        showingDetail.toggle()
+                        visibleEmojiDetails = data
                     }, label: {
                         EmojiItemView(emoji: data.emoji,
                                       emojiName: data.name)
-                    })
-                    .sheet(isPresented: $showingDetail, content: {
-                        EmojiDetailView(emojiDetails: data)
                     })
                 })
             }
@@ -31,6 +28,14 @@ struct ContentView: View {
             .listStyle(InsetGroupedListStyle())
             .navigationBarTitle("EmojiList")
         }
+        /// 實作 Open URL
+        .onOpenURL(perform: { url in
+            guard let emojiDetails = emojiData.first(where: { $0.url == url }) else {return}
+            visibleEmojiDetails = emojiDetails
+        })
+        .sheet(item: $visibleEmojiDetails, content: { emojiDetails in
+            EmojiDetailView(emojiDetails: emojiDetails)
+        })
     }
 }
 
