@@ -1,8 +1,8 @@
 //
-//  MyWidget.swift
-//  MyWidget
+//  MyWidgets.swift
+//  MyWidgets
 //
-//  Created by Willey on 2021/1/18.
+//  Created by Willey on 2021/1/21.
 //
 
 import WidgetKit
@@ -38,7 +38,7 @@ struct SimpleEntry: TimelineEntry {
     let date: Date
 }
 
-struct MyWidgetEntryView : View {
+struct MyWidgetsEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
@@ -46,22 +46,21 @@ struct MyWidgetEntryView : View {
     }
 }
 
-@main
-struct MyWidget: Widget {
-    let kind: String = "MyWidget"
+struct MyWidgets: Widget {
+    let kind: String = "MyWidgets"
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            MyWidgetEntryView(entry: entry)
+            MyWidgetsEntryView(entry: entry)
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")
     }
 }
 
-struct MyWidget_Previews: PreviewProvider {
+struct MyWidgets_Previews: PreviewProvider {
     static var previews: some View {
-        MyWidgetEntryView(entry: SimpleEntry(date: Date()))
+        MyWidgetsEntryView(entry: SimpleEntry(date: Date()))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

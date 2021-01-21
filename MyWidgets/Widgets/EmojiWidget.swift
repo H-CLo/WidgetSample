@@ -48,7 +48,6 @@ struct RandomEmojiWidgetEntryView : View {
     }
 }
 
-@main
 struct RandomEmojiWidget: Widget {
     let kind: String = "RandomEmojiWidget"
 

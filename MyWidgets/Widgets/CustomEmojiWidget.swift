@@ -63,7 +63,6 @@ struct CustomEmojiWidgetEntryView : View {
     }
 }
 
-@main
 struct CustomEmojiWidget: Widget {
     private let kind: String = "CustomEmojiWidget"
 
